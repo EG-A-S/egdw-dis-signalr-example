@@ -7,4 +7,4 @@ Console.WriteLine("App starting!");
 var consumer = new Consumer();
 await consumer.StartNotificationConnectionAsync();
 
-Console.ReadKey();
+Console.ReadLine();

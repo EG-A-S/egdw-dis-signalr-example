@@ -1,6 +1,7 @@
 ﻿using IdentityModel.Client;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Logging;
 
 namespace SignalR.ExampleClient
 {
@@ -34,9 +35,12 @@ namespace SignalR.ExampleClient
 
                             return response.AccessToken;
                         });
-
-                        
                     };
+                })
+                .ConfigureLogging(logging =>
+                {
+                    logging.AddConsole();
+                    logging.SetMinimumLevel(LogLevel.Debug);
                 })
                 .WithAutomaticReconnect()
                 .Build();
